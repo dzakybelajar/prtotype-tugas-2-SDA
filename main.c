@@ -3,7 +3,6 @@
 
 int menu_advanced_sorting(){
     int input;
-    int p=0;
    
     do
     {
@@ -14,7 +13,7 @@ int menu_advanced_sorting(){
         printf("3.Shell Sort\n");
         printf("4.Kembali\n");
         printf("Pilih metode:");
-        p=scanf("%d",&input);
+        scanf("%d",&input);
         while(getchar()!='\n');
         switch (input)
         {
@@ -40,7 +39,6 @@ int menu_advanced_sorting(){
 
 int menu_sorting_dasar(){
     int input;
-    int p=0;
    
     do
     {   
@@ -51,7 +49,7 @@ int menu_sorting_dasar(){
         printf("3.Selection Sort\n");
         printf("4.Kembali\n");
         printf("Pilih metode:");
-        p=scanf("%d",&input);
+        scanf("%d",&input);
         while(getchar()!='\n');
         switch (input)
         {
@@ -77,7 +75,6 @@ int menu_sorting_dasar(){
 
 int menu_utama(){
     int input;
-    int p=0;
    
     do
     {   
@@ -87,7 +84,7 @@ int menu_utama(){
         printf("2.Advanced Sorting\n");
         printf("3.Keluar\n");
         printf("Pilih menu:");
-        p=scanf("%d",&input);
+        scanf("%d",&input);
         while(getchar()!='\n');
         switch (input)
         {
