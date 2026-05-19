@@ -1,9 +1,8 @@
 #include <stdio.h>
 
-
 int menu_advanced_sorting(){
     int input;
-   
+    
     do
     {
         input=0;
