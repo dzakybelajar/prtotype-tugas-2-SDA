@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include"header.h"
 
-int menu_advanced_sorting(){
+void menu_advanced_sorting(){
     int input;
     do
     {
@@ -33,10 +33,9 @@ int menu_advanced_sorting(){
             break;
         }
     } while (input!=4);
-    return 1;
 }
 
-int menu_sorting_dasar(){
+void menu_sorting_dasar(){
     int input;
     do
     {   
@@ -68,10 +67,9 @@ int menu_sorting_dasar(){
             break;
         }
     } while (input!=4);
-    return 1;
 }
 
-int menu_utama(){
+void menu_utama(){
     int input;
     do
     {   
@@ -99,7 +97,6 @@ int menu_utama(){
             break;
         }
     } while (input!=3);
-    return 1;
 }
 
 int main(){
