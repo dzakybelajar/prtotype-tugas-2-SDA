@@ -1,5 +1,5 @@
-int data_bilangan[1000];
-
+void menu_sorting_dasar();
+void menu_advanced_sorting();
 void bubble_sort();
 void insertion_sort();
 void selection_sort();
