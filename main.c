@@ -3,7 +3,6 @@
 
 int menu_advanced_sorting(){
     int input;
-
     do
     {
         input=0;
@@ -39,7 +38,6 @@ int menu_advanced_sorting(){
 
 int menu_sorting_dasar(){
     int input;
-   
     do
     {   
         input=0;
@@ -75,7 +73,6 @@ int menu_sorting_dasar(){
 
 int menu_utama(){
     int input;
-   
     do
     {   
         input=0;
