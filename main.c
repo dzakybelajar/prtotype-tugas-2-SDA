@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include"header.h"
 
 int menu_advanced_sorting(){
     int input;
-    
+
     do
     {
         input=0;
@@ -17,13 +18,13 @@ int menu_advanced_sorting(){
         switch (input)
         {
         case 1:
-           printf("Merge sort\n");
+           merge_sort();
             break;
         case 2:
-            printf("Quick sort\n");
+            quick_sort();
             break;
         case 3:
-            printf("Shell sort\n");
+            shell_sort();
             break;
         case 4:
             printf("Kembali ke manu utama!\n");
@@ -53,13 +54,13 @@ int menu_sorting_dasar(){
         switch (input)
         {
         case 1:
-           printf("bubble sort\n");
+           bubble_sort();
             break;
         case 2:
-            printf("insertion sort\n");
+            insertion_sort();
             break;
         case 3:
-            printf("selection sort\n");
+            selection_sort();
             break;
         case 4:
             printf("Kembali ke manu utama!\n");
