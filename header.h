@@ -1,3 +1,4 @@
+void menu_utama();
 void menu_sorting_dasar();
 void menu_advanced_sorting();
 void acak_data_bilangan();

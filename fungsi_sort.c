@@ -1,12 +1,12 @@
 #include<stdio.h>
-#include"header.h"
 #include<stdlib.h>
 #include<time.h>
+#include"header.h"
 
-int data_bilangan[1000];
 clock_t waktu_mulai, waktu_akhir;
 double kompleksitas_waktu;
 int tampilan;
+int data_bilangan[1000];
 
 void acak_data_bilangan(){
     srand(time(NULL));
@@ -42,7 +42,7 @@ void bubble_sort(){
     waktu_mulai=clock();
     for (int i = 0; i < sizeof(data_bilangan)/sizeof(int); i++)
     {
-        for (int j = 1; j < sizeof(data_bilangan)/sizeof(int); j++)
+        for (int j = 1; j < sizeof(data_bilangan)/sizeof(int)-i; j++)
         {
             if (data_bilangan[j-1]>data_bilangan[j])
             {
@@ -67,8 +67,22 @@ void insertion_sort(){
     printf("sebelum sorting:\n");
     TampilanSebelumAtauSetelahSorting(tampilan);
 
-
-
+    waktu_mulai=clock();
+    for (int i = 0; i <sizeof(data_bilangan)/sizeof(int)-1 ; i++)
+    {   
+        int j=i+1;
+        int temp=data_bilangan[j];
+        while (j>0 && temp<data_bilangan[j-1])
+        {
+            data_bilangan[j]=data_bilangan[j-1];
+            j=j-1;
+        }
+        data_bilangan[j]=temp;
+    }
+    waktu_akhir=clock();
+    kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
+    
     tampilan=InputTampilanSebelumAtauSetelahSorting();
     printf("setelah sorting:\n");
     TampilanSebelumAtauSetelahSorting(tampilan);
@@ -112,72 +126,4 @@ void quick_sort(){
 
 void shell_sort(){
 
-}
-
-void menu_advanced_sorting(){
-    int input;
-    do
-    {
-        input=0;
-        printf("\n==== ADVANCED SORTING ====\n");
-        printf("1.Merge Sort\n");
-        printf("2.Quick Sort\n");
-        printf("3.Shell Sort\n");
-        printf("4.Kembali\n");
-        printf("Pilih metode:");
-        scanf("%d",&input);
-        while(getchar()!='\n');
-        switch (input)
-        {
-        case 1:
-           merge_sort();
-            break;
-        case 2:
-            quick_sort();
-            break;
-        case 3:
-            shell_sort();
-            break;
-        case 4:
-            printf("Kembali ke manu utama!\n");
-            break;
-        default:
-            printf("input tidak valid!\n");
-            break;
-        }
-    } while (input!=4);
-}
-
-void menu_sorting_dasar(){
-    int input;
-    do
-    {   
-        input=0;
-        printf("\n==== SORTING DASAR ====\n");
-        printf("1.Bubble Sort\n");
-        printf("2.Insertion Sort\n");
-        printf("3.Selection Sort\n");
-        printf("4.Kembali\n");
-        printf("Pilih metode:");
-        scanf("%d",&input);
-        while(getchar()!='\n');
-        switch (input)
-        {
-        case 1:
-           bubble_sort();
-            break;
-        case 2:
-            insertion_sort();
-            break;
-        case 3:
-            selection_sort();
-            break;
-        case 4:
-            printf("Kembali ke manu utama!\n");
-            break;
-        default:
-            printf("input tidak valid!\n");
-            break;
-        }
-    } while (input!=4);
 }
