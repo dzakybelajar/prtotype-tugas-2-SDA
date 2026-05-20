@@ -5,16 +5,70 @@
 
 int data_bilangan[1000];
 
-void bubble_sort(){
+void acak_data_bilangan(){
+    srand(time(NULL));
+    for (int i = 0; i < 1000; i++)
+    { data_bilangan[i]=rand(); }
+}
 
+int InputTampilanSebelumAtauSetelahSorting(){
+    int input=0;
+    int p=0;
+    do{
+        printf("masukkan banyak data yang ingin ditampilkan:");
+        p=scanf("%d",&input);
+        while(getchar()!='\n');
+        if (p==0 || input<=0)
+        { printf("input tidak valid!\n"); }
+    }while(input<=0);
+    return input;
+}
+
+void TampilanSebelumAtauSetelahSorting(int tampilan){
+    for (int i = 0; i < tampilan; i++)
+    {
+        printf("%d ",data_bilangan[i]);
+        printf("\n");
+    }
+    
+}
+
+void bubble_sort(){
+    int tampilan;
+    acak_data_bilangan();
+    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    printf("sebelum sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan);
+
+
+
+    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    printf("setelah sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan);
 }
 
 void insertion_sort(){
+    int tampilan;
+    acak_data_bilangan();
+    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    TampilanSebelumAtauSetelahSorting(tampilan);
 
+
+
+    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    TampilanSebelumAtauSetelahSorting(tampilan);
 }
 
 void selection_sort(){
+    int tampilan;
+    acak_data_bilangan();
+    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    TampilanSebelumAtauSetelahSorting(tampilan);
+    
 
+
+    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    TampilanSebelumAtauSetelahSorting(tampilan);
 }
 
 void merge_sort(){
