@@ -4,6 +4,9 @@
 #include<time.h>
 
 int data_bilangan[1000];
+clock_t waktu_mulai, waktu_akhir;
+double kompleksitas_waktu;
+int tampilan;
 
 void acak_data_bilangan(){
     srand(time(NULL));
@@ -31,13 +34,27 @@ void TampilanSebelumAtauSetelahSorting(int tampilan){
 }
 
 void bubble_sort(){
-    int tampilan;
     acak_data_bilangan();
     tampilan=InputTampilanSebelumAtauSetelahSorting();
     printf("sebelum sorting:\n");
     TampilanSebelumAtauSetelahSorting(tampilan);
 
-
+    waktu_mulai=clock();
+    for (int i = 0; i < sizeof(data_bilangan)/sizeof(int); i++)
+    {
+        for (int j = 1; j < sizeof(data_bilangan)/sizeof(int); j++)
+        {
+            if (data_bilangan[j-1]>data_bilangan[j])
+            {
+                int temp=data_bilangan[j];
+                data_bilangan[j]=data_bilangan[j-1];
+                data_bilangan[j-1]=temp;
+            }
+        } 
+    }
+    waktu_akhir=clock();
+    kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
 
     tampilan=InputTampilanSebelumAtauSetelahSorting();
     printf("setelah sorting:\n");
@@ -45,7 +62,6 @@ void bubble_sort(){
 }
 
 void insertion_sort(){
-    int tampilan;
     acak_data_bilangan();
     tampilan=InputTampilanSebelumAtauSetelahSorting();
     printf("sebelum sorting:\n");
@@ -59,14 +75,11 @@ void insertion_sort(){
 }
 
 void selection_sort(){
-    int tampilan;
     acak_data_bilangan();
     tampilan=InputTampilanSebelumAtauSetelahSorting();
     printf("sebelum sorting:\n");
     TampilanSebelumAtauSetelahSorting(tampilan);
     
-    clock_t waktu_mulai, waktu_akhir;
-    double kompleksitas_waktu;
     waktu_mulai=clock();
     for (int i = 0; i < sizeof(data_bilangan)/sizeof(int); i++)
     {
