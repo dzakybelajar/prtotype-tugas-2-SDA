@@ -1,5 +1,8 @@
 void menu_sorting_dasar();
 void menu_advanced_sorting();
+void acak_data_bilangan();
+int InputTampilanSebelumAtauSetelahSorting();
+void TampilanSebelumAtauSetelahSorting(int);
 void bubble_sort();
 void insertion_sort();
 void selection_sort();
