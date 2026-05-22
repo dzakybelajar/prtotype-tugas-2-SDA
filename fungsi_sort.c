@@ -83,15 +83,13 @@ void insertion_sort() {
     printf("sebelum sorting:\n");
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 
-    clock_t waktu_mulai = clock();
-    
-    for (int i = 0; i < MAX_INT - 1; i++) {   
+    waktu_mulai = clock();
+    for (int i = 0; i < MAX_INT - 1; i++) 
+    {   
         int j = i + 1;
         int temp = data_bilangan[j];
-        while (j > 0 && temp < data_bilangan[j - 1]) {
-            data_bilangan[j] = data_bilangan[j - 1];
-            j--;
-        }
+        while (j > 0 && temp < data_bilangan[j - 1])
+        { data_bilangan[j] = data_bilangan[j - 1]; j--; }
         data_bilangan[j] = temp;
     }
     
@@ -110,17 +108,20 @@ void selection_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
     
     waktu_mulai=clock();
-    for (int i = 0; i < MAX_INT; i++)
-    {
+    for (int i = 0; i < MAX_INT-1; i++)
+    {   
+        int indeks=i;
         for (int j = i+1; j < MAX_INT; j++)
         {
-            if (data_bilangan[i]>data_bilangan[j])
-            {
-                int temp=data_bilangan[j];
-                data_bilangan[j]=data_bilangan[i];
-                data_bilangan[i]=temp;
-            }
+            if (data_bilangan[j]<data_bilangan[indeks])
+            { indeks=j; }
         } 
+        if (indeks!=i)
+        {
+            int temp=data_bilangan[indeks];
+            data_bilangan[indeks]=data_bilangan[i];
+            data_bilangan[i]=temp;
+        }
     }
     waktu_akhir=clock();
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
@@ -138,7 +139,7 @@ void merge_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
     waktu_mulai=clock();
-
+    //algoritmanya
     waktu_akhir=clock();
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
@@ -155,7 +156,7 @@ void quick_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
     waktu_mulai=clock();
-
+    //algoritmanya
     waktu_akhir=clock();
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
@@ -172,7 +173,7 @@ void shell_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
     waktu_mulai=clock();
-
+    //algoritmanya
     waktu_akhir=clock();
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
