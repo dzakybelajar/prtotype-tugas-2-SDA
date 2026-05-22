@@ -6,43 +6,59 @@
 clock_t waktu_mulai, waktu_akhir;
 double kompleksitas_waktu;
 int tampilan;
-int data_bilangan[1000];
+int data_bilangan[MAX_INT];
+char data_string[MAX_WORD][20];
 
-void acak_data_bilangan(){
-    srand(time(NULL));
-    for (int i = 0; i < 1000; i++)
-    { data_bilangan[i]=rand(); }
+void acak_data(int mode){
+    if(mode==MAX_INT)
+    {
+        srand(time(NULL));
+        for (int i = 0; i < MAX_INT; i++)
+        { data_bilangan[i]=rand(); }
+    }
+    else if(mode==MAX_WORD)
+    {
+        
+    }
 }
 
-int InputTampilanSebelumAtauSetelahSorting(){
+int InputTampilanSebelumAtauSetelahSorting(int max){
     int input=0;
     int p=0;
     do{
         printf("masukkan banyak data yang ingin ditampilkan:");
         p=scanf("%d",&input);
         while(getchar()!='\n');
-        if (p==0 || input<=0)
+        if (p==0 || input<=0 || input>max)
         { printf("input tidak valid!\n"); }
-    }while(input<=0);
+    }while(input<=0 || input>max);
     return input;
 }
 
-void TampilanSebelumAtauSetelahSorting(int tampilan){
-    for (int i = 0; i < tampilan; i++)
-    { printf("%d ",data_bilangan[i]); }
-    printf("\n");
+void TampilanSebelumAtauSetelahSorting(int tampilan,int mode){
+    if(mode==MAX_INT)
+    {
+        for (int i = 0; i < tampilan; i++)
+        { printf("%d ",data_bilangan[i]); }
+        printf("\n");
+    }
+    else if(mode==MAX_WORD)
+    {
+        for (int i = 0; i < tampilan; i++)
+        { printf("%s\n",data_string[i]); }
+    }   
 }
 
 void bubble_sort(){
-    acak_data_bilangan();
-    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    acak_data(MAX_INT);
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("sebelum sorting:\n");
-    TampilanSebelumAtauSetelahSorting(tampilan);
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 
     waktu_mulai=clock();
-    for (int i = 0; i < sizeof(data_bilangan)/sizeof(int); i++)
+    for (int i = 0; i < MAX_INT; i++)
     {
-        for (int j = 1; j < sizeof(data_bilangan)/sizeof(int)-i; j++)
+        for (int j = 1; j < MAX_INT-i; j++)
         {
             if (data_bilangan[j-1]>data_bilangan[j])
             {
@@ -56,21 +72,20 @@ void bubble_sort(){
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
 
-    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("setelah sorting:\n");
-    TampilanSebelumAtauSetelahSorting(tampilan);
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 }
 
-void insertion_sort() {
-    int n = sizeof(data_bilangan) / sizeof(data_bilangan[0]);
-    
-    acak_data_bilangan();
+void insertion_sort() {    
+    acak_data(MAX_INT);
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("sebelum sorting:\n");
-    TampilanSebelumAtauSetelahSorting(InputTampilanSebelumAtauSetelahSorting());
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 
     clock_t waktu_mulai = clock();
     
-    for (int i = 0; i < n - 1; i++) {   
+    for (int i = 0; i < MAX_INT - 1; i++) {   
         int j = i + 1;
         int temp = data_bilangan[j];
         while (j > 0 && temp < data_bilangan[j - 1]) {
@@ -83,21 +98,21 @@ void insertion_sort() {
     clock_t waktu_akhir = clock();
     double kompleksitas_waktu = ((double)(waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan: %f detik\n", kompleksitas_waktu);
-    
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("setelah sorting:\n");
-    TampilanSebelumAtauSetelahSorting(InputTampilanSebelumAtauSetelahSorting());
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 }
 
 void selection_sort(){
-    acak_data_bilangan();
-    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    acak_data(MAX_INT);
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("sebelum sorting:\n");
-    TampilanSebelumAtauSetelahSorting(tampilan);
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
     
     waktu_mulai=clock();
-    for (int i = 0; i < sizeof(data_bilangan)/sizeof(int); i++)
+    for (int i = 0; i < MAX_INT; i++)
     {
-        for (int j = i+1; j < sizeof(data_bilangan)/sizeof(int); j++)
+        for (int j = i+1; j < MAX_INT; j++)
         {
             if (data_bilangan[i]>data_bilangan[j])
             {
@@ -111,19 +126,58 @@ void selection_sort(){
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
 
-    tampilan=InputTampilanSebelumAtauSetelahSorting();
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("setelah sorting:\n");
-    TampilanSebelumAtauSetelahSorting(tampilan);
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 }
 
 void merge_sort(){
+    acak_data(MAX_WORD);
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
+    printf("sebelum sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
+    waktu_mulai=clock();
+
+    waktu_akhir=clock();
+    kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
+
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
+    printf("setelah sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 }
 
 void quick_sort(){
+    acak_data(MAX_WORD);
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
+    printf("sebelum sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
+    waktu_mulai=clock();
+
+    waktu_akhir=clock();
+    kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
+
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
+    printf("setelah sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 }
 
 void shell_sort(){
+    acak_data(MAX_WORD);
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
+    printf("sebelum sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
+    waktu_mulai=clock();
+
+    waktu_akhir=clock();
+    kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
+
+    tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
+    printf("setelah sorting:\n");
+    TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);    
 }
