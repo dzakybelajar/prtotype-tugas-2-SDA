@@ -33,6 +33,7 @@ void menu_utama(){
 }
 
 void menu_advanced_sorting(){
+    baca_file();
     do
     {
         input=0;

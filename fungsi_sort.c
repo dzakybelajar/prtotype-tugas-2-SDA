@@ -9,6 +9,20 @@ int tampilan;
 int data_bilangan[MAX_INT];
 char data_string[MAX_WORD][20];
 
+void baca_file(){
+    FILE *file=fopen("words.txt",'r');
+
+    if (file==NULL)
+    { printf("file tidak ditemukan!\n"); return; }
+    
+    int i=0;
+    while (i<MAX_WORD && (fgets(data_string[i],20,file))!=NULL)
+    {
+        data_string[i][strcspn(data_string[i], "\n")] = 0;
+        i++;
+    }
+}
+
 void acak_data(int mode){
     if(mode==MAX_INT)
     {
@@ -93,7 +107,7 @@ void insertion_sort() {
         data_bilangan[j] = temp;
     }
     
-    clock_t waktu_akhir = clock();
+    waktu_akhir = clock();
     double kompleksitas_waktu = ((double)(waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan: %f detik\n", kompleksitas_waktu);
     tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);

@@ -9,6 +9,7 @@ void TampilanSebelumAtauSetelahSorting(int,int);
 void bubble_sort();
 void insertion_sort();
 void selection_sort();
+void baca_file();
 void merge_sort();
 void quick_sort();
 void shell_sort();
