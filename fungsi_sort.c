@@ -160,6 +160,53 @@ void selection_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_INT);
 }
 
+void merge(int left, int mid, int right){
+    char temp[MAX_WORD][20];
+    int i = left;
+    int j = mid + 1;
+    int k = left;
+
+    while(i <= mid && j <= right)
+    {
+        if(strcmp(data_string[i], data_string[j]) < 0)
+        {
+            strcpy(temp[k], data_string[i]); i++;
+        }
+        else
+        {
+            strcpy(temp[k], data_string[j]); j++;
+        } 
+        k++;
+    }
+
+    while(i <= mid)
+    {
+        strcpy(temp[k], data_string[i]);
+        i++;
+        k++;
+    }
+
+    while(j <= right)
+    {
+        strcpy(temp[k], data_string[j]);
+        j++;
+        k++;
+    }
+        for(i = left; i <= right; i++)
+    {
+            strcpy(data_string[i], temp[i]);
+    }
+}
+
+void merge_sort_recursive(int left, int right){
+    if(left < right)
+    {int mid = (left + right) / 2;
+        merge_sort_recursive(left, mid);
+        merge_sort_recursive(mid + 1, right);
+        merge(left, mid, right);
+    }
+}
+
 void merge_sort(){
     acak_data(MAX_WORD);
     tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
@@ -167,10 +214,10 @@ void merge_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
     waktu_mulai=clock();
-    //algoritmanya
+    merge_sort_recursive(0, MAX_WORD - 1);
     waktu_akhir=clock();
-    kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
-    printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
+    kompleksitas_waktu= ((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    printf("waktu yang diperlukan:%f detik\n", kompleksitas_waktu);
 
     tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
     printf("setelah sorting:\n");

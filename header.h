@@ -11,5 +11,7 @@ void insertion_sort();
 void selection_sort();
 int baca_file();
 void merge_sort();
+void merge(int,int,int);
+void merge_sort_recursive(int,int);
 void quick_sort();
 void shell_sort();
