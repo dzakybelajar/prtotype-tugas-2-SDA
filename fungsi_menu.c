@@ -33,7 +33,7 @@ void menu_utama(){
 }
 
 void menu_advanced_sorting(){
-    baca_file();
+    if(baca_file()==0){return;}
     do
     {
         input=0;
