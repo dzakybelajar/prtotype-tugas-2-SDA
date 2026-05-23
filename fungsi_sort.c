@@ -15,6 +15,8 @@ void baca_file(){
 
     if (file==NULL)
     { printf("file tidak ditemukan!\n"); return; }
+    else if (fgetc(file)==NULL)
+    { printf("file tidak ada konten!\n"); return; }
     
     int i=0;
     while (i<MAX_WORD && (fgets(data_string[i],20,file))!=NULL)
