@@ -39,7 +39,14 @@ void acak_data(int mode){
     }
     else if(mode==MAX_WORD)
     {
-        
+        srand(time(NULL));
+        for (int i = MAX_WORD - 1; i > 0; i--) {
+            int j = rand() % (i + 1);
+            char temp[20];
+            strcpy(temp, data_string[i]);
+            strcpy(data_string[i], data_string[j]);
+            strcpy(data_string[j], temp);
+        }
     }
 }
 
@@ -115,7 +122,7 @@ void insertion_sort() {
     }
     
     waktu_akhir = clock();
-    double kompleksitas_waktu = ((double)(waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
+    kompleksitas_waktu = ((double)(waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan: %f detik\n", kompleksitas_waktu);
     tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_INT);
     printf("setelah sorting:\n");
