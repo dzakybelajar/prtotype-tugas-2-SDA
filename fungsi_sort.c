@@ -169,38 +169,31 @@ void merge(int left, int mid, int right){
     while(i <= mid && j <= right)
     {
         if(strcmp(data_string[i], data_string[j]) < 0)
-        {
-            strcpy(temp[k], data_string[i]); i++;
-        }
+        { strcpy(temp[k], data_string[i]); i++; }
         else
-        {
-            strcpy(temp[k], data_string[j]); j++;
-        } 
+        { strcpy(temp[k], data_string[j]); j++; } 
         k++;
     }
 
     while(i <= mid)
     {
         strcpy(temp[k], data_string[i]);
-        i++;
-        k++;
+        i++; k++;
     }
 
     while(j <= right)
     {
         strcpy(temp[k], data_string[j]);
-        j++;
-        k++;
+        j++; k++;
     }
         for(i = left; i <= right; i++)
-    {
-            strcpy(data_string[i], temp[i]);
-    }
+    { strcpy(data_string[i], temp[i]); }
 }
 
 void merge_sort_recursive(int left, int right){
     if(left < right)
-    {int mid = (left + right) / 2;
+    {
+        int mid = (left + right) / 2;
         merge_sort_recursive(left, mid);
         merge_sort_recursive(mid + 1, right);
         merge(left, mid, right);
