@@ -16,7 +16,7 @@ int baca_file(){
     if (file==NULL)
     { printf("file tidak ditemukan!\n"); return 0; }
     else if (fgetc(file)==EOF)
-    { printf("file tidak ada konten!\n"); return 0; }
+    { printf("file tidak ada konten!\n"); fclose(file); return 0; }
     rewind(file);
 
     printf("file berhasil dibaca!\n");
@@ -26,6 +26,7 @@ int baca_file(){
         data_string[i][strcspn(data_string[i], "\n")] = 0;
         i++;
     }
+    fclose(file);
     return 1;
 }
 
