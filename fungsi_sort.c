@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include<time.h>
 #include"header.h"
 
@@ -10,7 +11,7 @@ int data_bilangan[MAX_INT];
 char data_string[MAX_WORD][20];
 
 void baca_file(){
-    FILE *file=fopen("words.txt",'r');
+    FILE *file=fopen("words.txt","r");
 
     if (file==NULL)
     { printf("file tidak ditemukan!\n"); return; }
