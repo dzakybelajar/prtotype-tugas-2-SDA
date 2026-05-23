@@ -47,7 +47,7 @@ void acak_data(int mode){
             strcpy(data_string[i], data_string[j]);
             strcpy(data_string[j], temp);
         }
-    }
+    } 
 }
 
 int InputTampilanSebelumAtauSetelahSorting(int max){
