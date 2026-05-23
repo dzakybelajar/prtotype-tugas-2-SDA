@@ -241,7 +241,22 @@ void shell_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
     waktu_mulai=clock();
-    //algoritmanya
+    int gap=MAX_WORD/2;
+    while (gap>=1)
+    {
+        for (int i = gap-1; i < MAX_WORD; i++) 
+        {   
+            int j = i-(gap-1);
+            if (strcmp(data_string[i],data_string[j])<0)
+            {
+                char temp[1][20];
+                strcpy(temp[0],data_string[i]);
+                strcpy(data_string[i],data_string[j]);
+                strcpy(data_string[j],temp[0]);
+            }
+        }
+        gap=gap/2;
+    }
     waktu_akhir=clock();
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
