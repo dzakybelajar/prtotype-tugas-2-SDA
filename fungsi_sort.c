@@ -218,7 +218,20 @@ void merge_sort(){
 }
 
 int quick_sort_partition (int low, int high) {
-    
+    int i, j;
+    char pivot[20];
+    pivot = data_string[high];
+    i = low - 1;
+
+    for (j = low; j <= high - 1; j++) {
+        if (data_string[j] < pivot) {
+            i++;
+            swap (data_string[i], data_string[j]);
+        }
+    }
+
+    swap (data_string[i + 1], data_string[high]);
+    return i + 1;
 }
 
 int quick_sort_recursive (int low, int high) {
