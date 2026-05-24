@@ -14,6 +14,7 @@ void merge_sort();
 void merge(int,int,int);
 void merge_sort_recursive(int,int);
 void quick_sort();
+void swap(char a[], char b[]);
 int quick_sort_partition(int low, int high);
 void quick_sort_recursive(int low, int high);
 void shell_sort();

@@ -219,19 +219,22 @@ void merge_sort(){
 
 void swap(char a[], char b[]) {
     char temp[20];
+
     strcpy(temp, a);
     strcpy(a, b);
     strcpy(b, temp);
 }
 
-int quick_sort_partition (int low, int high) {
+int quick_sort_partition(int low, int high){
     char pivot[20];
     strcpy(pivot, data_string[high]);
     
     int i = low - 1;
 
-    for(int j = low; j <= high - 1; j++) {
-        if(strcmp(data_string[j], pivot) < 0) {
+    for(int j = low; j <= high - 1; j++)
+    {
+        if(strcmp(data_string[j], pivot) < 0)
+        {
             i++;
             swap(data_string[i], data_string[j]);
         }
@@ -242,8 +245,14 @@ int quick_sort_partition (int low, int high) {
     return i + 1;
 }
 
-int quick_sort_recursive (int low, int high) {
+void quick_sort_recursive (int low, int high) {
+    if(low < high)
+    {
+        int pi = quick_sort_partition(low, high);
 
+        quick_sort_recursive(low, pi - 1);
+        quick_sort_recursive(pi + 1, high);
+    }
 }
 
 void quick_sort(){
@@ -253,7 +262,7 @@ void quick_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 
     waktu_mulai=clock();
-    //algoritmanya
+    quick_sort_recursive(0, MAX_WORD - 1);
     waktu_akhir=clock();
     kompleksitas_waktu=((double) (waktu_akhir - waktu_mulai)) / CLOCKS_PER_SEC;
     printf("waktu yang diperlukan:%f detik\n",kompleksitas_waktu);
