@@ -217,20 +217,28 @@ void merge_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 }
 
-int quick_sort_partition (int low, int high) {
-    int i, j;
-    char pivot[20];
-    pivot = data_string[high];
-    i = low - 1;
+void swap(char a[], char b[]) {
+    char temp[20];
+    strcpy(temp, a);
+    strcpy(a, b);
+    strcpy(b, temp);
+}
 
-    for (j = low; j <= high - 1; j++) {
-        if (data_string[j] < pivot) {
+int quick_sort_partition (int low, int high) {
+    char pivot[20];
+    strcpy(pivot, data_string[high]);
+    
+    int i = low - 1;
+
+    for(int j = low; j <= high - 1; j++) {
+        if(strcmp(data_string[j], pivot) < 0) {
             i++;
-            swap (data_string[i], data_string[j]);
+            swap(data_string[i], data_string[j]);
         }
     }
 
-    swap (data_string[i + 1], data_string[high]);
+    swap(data_string[i + 1], data_string[high]);
+
     return i + 1;
 }
 
