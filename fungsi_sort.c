@@ -217,6 +217,14 @@ void merge_sort(){
     TampilanSebelumAtauSetelahSorting(tampilan,MAX_WORD);
 }
 
+int quick_sort_partition (int low, int high) {
+    
+}
+
+int quick_sort_recursive (int low, int high) {
+
+}
+
 void quick_sort(){
     acak_data(MAX_WORD);
     tampilan=InputTampilanSebelumAtauSetelahSorting(MAX_WORD);
