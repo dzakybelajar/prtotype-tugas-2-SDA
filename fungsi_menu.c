@@ -48,8 +48,8 @@ void menu_advanced_sorting(){
         switch (input)
         {
         case 1:
-           merge_sort();
-           break;
+            merge_sort();
+            break;
         case 2:
             quick_sort();
             break;
