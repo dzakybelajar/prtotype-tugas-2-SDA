@@ -6,7 +6,7 @@ int input;
 void menu_utama(){
     do
     {   
-        input=0;
+        input = 0;
         printf("\n==== MENU UTAMA ====\n");
         printf("1. Sorting Dasar\n");
         printf("2. Advanced Sorting\n");
@@ -69,7 +69,7 @@ void menu_advanced_sorting(){
 void menu_sorting_dasar(){
     do
     {   
-        input=0;
+        input = 0;
         printf("\n==== SORTING DASAR ====\n");
         printf("1. Bubble Sort\n");
         printf("2. Insertion Sort\n");
